@@ -82,9 +82,14 @@ subscriptions _ =
 
 baseFooter : Html Msg
 baseFooter = footer [class "footer"] [
-  div [class "content has-text-centered"] [
-    p [] [text "本网站由Elm + Bulma构建"],
-    p [] [text "所有版权归黄宝臣(AKA 3gee)所有。"]]]
+  div [class "content has-text-centered", id "footer-info"] [
+    p [] [
+      text "本网站由Elm"
+      , span [] [img [src "./assets/img/elm.svg", class "image", class "is-16x16" ] [] ]
+      , text "和Bulma"
+      , span [] [img [src "./assets/img/bulma.svg", class "image", class "is-16x16" ] [] ]
+      ,text "构建"],
+    p [] [text "©所有内容版权归黄宝臣(AKA 3gee)所有"]]]
 
 cardTemplate : String -> (String, String) ->  List(Html msg) -> List(String, String) -> Html msg
 cardTemplate projectImage cardTitle description footerList =

@@ -5411,6 +5411,8 @@ var $author$project$Main$artUniverseCard = A4(
 			_Utils_Tuple2('https://opensea.io/collection/arts-from-universe', 'OpenSea')
 		]));
 var $elm$html$Html$b = _VirtualDom_node('b');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$baseFooter = A2(
 	$elm$html$Html$footer,
 	_List_fromArray(
@@ -5423,7 +5425,8 @@ var $author$project$Main$baseFooter = A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('content has-text-centered')
+					$elm$html$Html$Attributes$class('content has-text-centered'),
+					$elm$html$Html$Attributes$id('footer-info')
 				]),
 			_List_fromArray(
 				[
@@ -5432,14 +5435,46 @@ var $author$project$Main$baseFooter = A2(
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('本网站由Elm + Bulma构建')
+							$elm$html$Html$text('本网站由Elm'),
+							A2(
+							$elm$html$Html$span,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$img,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$src('./assets/img/elm.svg'),
+											$elm$html$Html$Attributes$class('image'),
+											$elm$html$Html$Attributes$class('is-16x16')
+										]),
+									_List_Nil)
+								])),
+							$elm$html$Html$text('和Bulma'),
+							A2(
+							$elm$html$Html$span,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$img,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$src('./assets/img/bulma.svg'),
+											$elm$html$Html$Attributes$class('image'),
+											$elm$html$Html$Attributes$class('is-16x16')
+										]),
+									_List_Nil)
+								])),
+							$elm$html$Html$text('构建')
 						])),
 					A2(
 					$elm$html$Html$p,
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('所有版权归黄宝臣(AKA 3gee)所有。')
+							$elm$html$Html$text('©所有内容版权归黄宝臣(AKA 3gee)所有')
 						]))
 				]))
 		]));
@@ -5549,7 +5584,6 @@ var $author$project$Main$fppyCard = A4(
 			_Utils_Tuple2('https://github.com/threecifanggen/python-functional-programming', 'GitHub')
 		]));
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$html$Html$section = _VirtualDom_node('section');
 var $author$project$Main$viewLink = F2(
