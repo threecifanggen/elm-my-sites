@@ -8,7 +8,6 @@ import Html.Attributes exposing (..)
 import Url
 import Views.Home exposing (homeView)
 import Html.Events exposing (onMouseUp)
-import Element.Region exposing (description)
 
 main : Program () Model Msg
 main =
@@ -81,63 +80,11 @@ subscriptions _ =
 
 -- VIEW
 
-
-view : Model -> Browser.Document Msg
-view model =
-  { title = "3GEE的主站"
-  , body =
-      [
-        nav [class "bd-navbar", class "navbar"] [
-            div [class "navbar-brand"] [
-                a [ class "navbar-item" , href "https://3gee.me"] [
-                   h1 [ id "title"] [text "3GEE.ME" ]]]
-            , div [class "navbar-menu"] [
-                div [class "navbar-start"] [
-                    viewLink "https://3gee.me" "Home"
-                    , viewLink "https://workwiki.3gee.me" "工作知识库"
-                    , div [ classList [ ("navbar-item", True), ("has-dropdown", True), ("is-hoverable", True) ]] [ 
-                        a [href "https://blog.3gee.me", class "navbar-link"] [text "我的博客"]
-                        , div [class "navbar-dropdown"] [
-                            viewLink "https://blog.3gee.me/categories/lambda-and-tau.html" "λ & τ"
-                            , viewLink "https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html" "过度解读"
-                            , viewLink "https://blog.3gee.me/categories/phold.html" "哲·叠"
-                         ]]]
-                , div [ class "navbar-end"] [
-
-                ]]
-        ]
-        , section [class "section", class "is-large", class "has-background-info"] [
-          div [class "container"] [
-          h1 [class "title", class "has-text-primary-light"] [text "欢迎来到我的主页"]
-          , div [class "block"] [
-            h2 [class "subtitle", class "block", class "has-text-primary-light"] [text "这里汇总了我在网络世界的大部分创作和痕迹。"]
-          ]
-        ]]
-        , section [class "section", class "is-large", class "has-background-light"] [
-          h1 [class "title", class "has-text-centered", class "has-text-grey-darker"] [text "我的开源项目"]
-          , br [] []
-          , div [class "container"] [
-            div [class "columns"] [
-              div [ class "column" ] [fppyCard]
-              , div [ class "column" ] [dsLearnCard]
-              , div [ class "column" ] [artUniverseCard]
-            ]
-          ]
-        ]
-        , text "The current URL is: "
-        , b [] [ text (Url.toString model.url) ]
-        , footer [class "footer"] [
-          div [class "content has-text-centered"] [
-            p [] [text "本网站由Elm + Bulma构建"],
-            p [] [text "所有版权归黄宝臣(AKA 3gee)所有。"]
-          ]
-        ]
-      ]
-  }
-
-viewLink : String -> String-> Html msg
-viewLink path viewName =
-  div [ class "navbar-item"] [ a [href path] [text viewName]]
+baseFooter : Html Msg
+baseFooter = footer [class "footer"] [
+  div [class "content has-text-centered"] [
+    p [] [text "本网站由Elm + Bulma构建"],
+    p [] [text "所有版权归黄宝臣(AKA 3gee)所有。"]]]
 
 cardTemplate : String -> (String, String) ->  List(Html msg) -> List(String, String) -> Html msg
 cardTemplate projectImage cardTitle description footerList =
@@ -169,11 +116,89 @@ dsLearnCard = cardTemplate
     ("data-science-learning", "数据科学相关的学习资料") 
     [ text "这是一个数据分析、数据工程等各种文献、书籍的阅读笔记，里面也有",
       code [] [text "jupyter notebook"],
-      text "相关的实现"]
+      text "相关的的实现，开源方便大家一同学习进步。"]
     [("https://github.com/threecifanggen/data-science-learning", "GitHub")]
 
 artUniverseCard : Html msg
-artUniverseCard = div [ class "card" ] [
-  div [ class "card-header" ] [
-    p [ class "card-header-title" ] [text "arts-from-universe"]
-  ]]
+artUniverseCard = cardTemplate 
+    "./assets/img/arts-from-universe.jpg"
+    ("arts-from-universe.", "计算机艺术") 
+    [ text "通过GAN、MIDI等工具实现一些计算机艺术，视图从另一个视角理解艺术和宇宙，代码由Python和Rust实现。"]
+    [ ("https://github.com/threecifanggen/arts-from-universe", "GitHub")
+      , ("https://opensea.io/collection/arts-from-universe", "OpenSea")]
+
+blogTileView : String -> String -> String -> List(Html Msg)
+blogTileView blogTitle blogUrl blogDescription = [
+    p [ class "title", class "is-4", class "has-text-centered" ] [ a [ href blogUrl, class "has-text-primary-light" ]  [ text blogTitle ]]
+    , br [] []
+    , p [ class "subtitle", class "is-6", class "has-text-primary-light", class "has-text-centered" ] [text blogDescription]]
+
+view : Model -> Browser.Document Msg
+view model =
+  { title = "3GEE的主站"
+  , body =
+      [
+        nav [class "bd-navbar", class "navbar", class "container"] [
+            div [class "navbar-brand"] [
+                a [ class "navbar-item" , href "https://3gee.me"] [
+                   h1 [ id "title"] [text "3GEE.ME" ]]]
+            , div [class "navbar-menu"] [
+                div [class "navbar-start"] [
+                    viewLink "https://3gee.me" "Home"
+                    , viewLink "https://workwiki.3gee.me" "工作知识库"
+                    , div [ classList [ ("navbar-item", True), ("has-dropdown", True), ("is-hoverable", True) ]] [ 
+                        a [href "https://blog.3gee.me", class "navbar-link"] [text "我的博客"]
+                        , div [class "navbar-dropdown"] [
+                            viewLink "https://blog.3gee.me/categories/lambda-and-tau.html" "λ & τ"
+                            , viewLink "https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html" "过度解读"
+                            , viewLink "https://blog.3gee.me/categories/phold.html" "哲·叠"
+                         ]]]
+                , div [ class "navbar-end"] [
+
+                ]]
+        ]
+        , section [class "section", class "is-large", class "has-background-info"] [
+          div [class "container"] [
+          h1 [class "title", class "has-text-primary-light", class "has-text-centered"] [text "欢迎来到我的主页"]
+          , div [class "block"] [
+            h2 [class "subtitle", class "block", class "has-text-primary-light", class "has-text-centered"] [text "这里汇总了我在网络世界的大部分创作和痕迹。"]
+          ]
+        ]]
+        , section [class "section", class "is-large", class "has-background-light"] [
+          h1 [class "title", class "has-text-centered", class "has-text-grey-darker"] [text "我的开源项目"]
+          , br [] []
+          , div [class "container"] [
+            div [class "columns"] [
+              div [ class "column" ] [fppyCard]
+              , div [ class "column" ] [dsLearnCard]
+              , div [ class "column" ] [artUniverseCard]
+            ]
+          ]
+        ]
+        , section [ class "section", class "is-large", class "has-background-info"] [
+          div [class "container"] [
+            h1 [ class "title", class "has-text-primary-light", class "has-text-centered" ] [text "我的博客/专栏" ]
+            , div [ class "block" ] [
+              h2 [ class "subtitle", class "block", class "has-text-primary-light", class "has-text-centered" ] [
+                text "因为爱好广泛，在这里维护了三个不同的播客主题，分别是DS/CS，电影和哲学。"]]
+            , br [] []
+            , br [] []
+            , div [ class "tile", class "is-ancestor"] [
+              div [ class "tile", class "is-6", class "is-vertical", class "is-parent" ] [
+                div [ class "tile", class "is-child", class "is-box"] (blogTileView "λ&τ" "https://blog.3gee.me/categories/lambda-and-tau.html" "一个函数式编程和数据科学相关的博客")
+                , div [ class "tile", class "is-child", class "is-box"] (blogTileView "过度解读" "https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html" "艺术（主要以电影为主）的博客")
+                , div [ class "tile", class "is-child", class "is-box"] (blogTileView "哲·叠" "https://blog.3gee.me/categories/phold.html" "哲学相关的博客")]
+              , div [ class "tile", class "is-6", class "is-child"] [
+                p [ class "title", class "is-4", class "has-text-centered" ] [ a [ href "https://blog.3gee.me/photos/", class "has-text-primary-light" ]  [ text "我的摄影集" ]]
+                , figure [ class "image", class "is-5by3" ] [ img [ src "./assets/img/photo-albums-pic.jpg" ] []]
+              ]]]]
+        , div [ class "is-hidden" ] [
+          text "The current URL is: "
+          , b [] [ text (Url.toString model.url) ]]
+        , baseFooter
+      ]
+  }
+
+viewLink : String -> String -> Html msg
+viewLink path viewName =
+  div [ class "navbar-item"] [ a [href path] [text viewName]]

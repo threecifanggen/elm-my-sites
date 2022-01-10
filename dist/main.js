@@ -5258,64 +5258,6 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$artUniverseCard = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('card')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('card-header')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$p,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('card-header-title')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('arts-from-universe')
-						]))
-				]))
-		]));
-var $elm$html$Html$b = _VirtualDom_node('b');
-var $elm$html$Html$br = _VirtualDom_node('br');
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var $elm$core$Tuple$second = function (_v0) {
-	var y = _v0.b;
-	return y;
-};
-var $elm$html$Html$Attributes$classList = function (classes) {
-	return $elm$html$Html$Attributes$class(
-		A2(
-			$elm$core$String$join,
-			' ',
-			A2(
-				$elm$core$List$map,
-				$elm$core$Tuple$first,
-				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
-};
 var $elm$html$Html$figure = _VirtualDom_node('figure');
 var $elm$html$Html$footer = _VirtualDom_node('footer');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
@@ -5326,12 +5268,19 @@ var $elm$html$Html$Attributes$href = function (url) {
 		_VirtualDom_noJavaScriptUri(url));
 };
 var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$cardTemplate = F4(
 	function (projectImage, cardTitle, description, footerList) {
 		return A2(
@@ -5448,6 +5397,116 @@ var $author$project$Main$cardTemplate = F4(
 						footerList))
 				]));
 	});
+var $author$project$Main$artUniverseCard = A4(
+	$author$project$Main$cardTemplate,
+	'./assets/img/arts-from-universe.jpg',
+	_Utils_Tuple2('arts-from-universe.', '计算机艺术'),
+	_List_fromArray(
+		[
+			$elm$html$Html$text('通过GAN、MIDI等工具实现一些计算机艺术，视图从另一个视角理解艺术和宇宙，代码由Python和Rust实现。')
+		]),
+	_List_fromArray(
+		[
+			_Utils_Tuple2('https://github.com/threecifanggen/arts-from-universe', 'GitHub'),
+			_Utils_Tuple2('https://opensea.io/collection/arts-from-universe', 'OpenSea')
+		]));
+var $elm$html$Html$b = _VirtualDom_node('b');
+var $author$project$Main$baseFooter = A2(
+	$elm$html$Html$footer,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('footer')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('content has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('本网站由Elm + Bulma构建')
+						])),
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('所有版权归黄宝臣(AKA 3gee)所有。')
+						]))
+				]))
+		]));
+var $elm$html$Html$br = _VirtualDom_node('br');
+var $author$project$Main$blogTileView = F3(
+	function (blogTitle, blogUrl, blogDescription) {
+		return _List_fromArray(
+			[
+				A2(
+				$elm$html$Html$p,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('title'),
+						$elm$html$Html$Attributes$class('is-4'),
+						$elm$html$Html$Attributes$class('has-text-centered')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href(blogUrl),
+								$elm$html$Html$Attributes$class('has-text-primary-light')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(blogTitle)
+							]))
+					])),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				A2(
+				$elm$html$Html$p,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('subtitle'),
+						$elm$html$Html$Attributes$class('is-6'),
+						$elm$html$Html$Attributes$class('has-text-primary-light'),
+						$elm$html$Html$Attributes$class('has-text-centered')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(blogDescription)
+					]))
+			]);
+	});
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$html$Html$Attributes$classList = function (classes) {
+	return $elm$html$Html$Attributes$class(
+		A2(
+			$elm$core$String$join,
+			' ',
+			A2(
+				$elm$core$List$map,
+				$elm$core$Tuple$first,
+				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
+};
 var $elm$html$Html$code = _VirtualDom_node('code');
 var $author$project$Main$dsLearnCard = A4(
 	$author$project$Main$cardTemplate,
@@ -5463,7 +5522,7 @@ var $author$project$Main$dsLearnCard = A4(
 				[
 					$elm$html$Html$text('jupyter notebook')
 				])),
-			$elm$html$Html$text('相关的实现')
+			$elm$html$Html$text('相关的的实现，开源方便大家一同学习进步。')
 		]),
 	_List_fromArray(
 		[
@@ -5524,7 +5583,8 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$Attributes$class('bd-navbar'),
-						$elm$html$Html$Attributes$class('navbar')
+						$elm$html$Html$Attributes$class('navbar'),
+						$elm$html$Html$Attributes$class('container')
 					]),
 				_List_fromArray(
 					[
@@ -5646,7 +5706,8 @@ var $author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$Attributes$class('title'),
-										$elm$html$Html$Attributes$class('has-text-primary-light')
+										$elm$html$Html$Attributes$class('has-text-primary-light'),
+										$elm$html$Html$Attributes$class('has-text-centered')
 									]),
 								_List_fromArray(
 									[
@@ -5666,7 +5727,8 @@ var $author$project$Main$view = function (model) {
 											[
 												$elm$html$Html$Attributes$class('subtitle'),
 												$elm$html$Html$Attributes$class('block'),
-												$elm$html$Html$Attributes$class('has-text-primary-light')
+												$elm$html$Html$Attributes$class('has-text-primary-light'),
+												$elm$html$Html$Attributes$class('has-text-centered')
 											]),
 										_List_fromArray(
 											[
@@ -5741,20 +5803,13 @@ var $author$project$Main$view = function (model) {
 									]))
 							]))
 					])),
-				$elm$html$Html$text('The current URL is: '),
 				A2(
-				$elm$html$Html$b,
-				_List_Nil,
+				$elm$html$Html$section,
 				_List_fromArray(
 					[
-						$elm$html$Html$text(
-						$elm$url$Url$toString(model.url))
-					])),
-				A2(
-				$elm$html$Html$footer,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('footer')
+						$elm$html$Html$Attributes$class('section'),
+						$elm$html$Html$Attributes$class('is-large'),
+						$elm$html$Html$Attributes$class('has-background-info')
 					]),
 				_List_fromArray(
 					[
@@ -5762,26 +5817,166 @@ var $author$project$Main$view = function (model) {
 						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('content has-text-centered')
+								$elm$html$Html$Attributes$class('container')
 							]),
 						_List_fromArray(
 							[
 								A2(
-								$elm$html$Html$p,
-								_List_Nil,
+								$elm$html$Html$h1,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('本网站由Elm + Bulma构建')
+										$elm$html$Html$Attributes$class('title'),
+										$elm$html$Html$Attributes$class('has-text-primary-light'),
+										$elm$html$Html$Attributes$class('has-text-centered')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('我的博客/专栏')
 									])),
 								A2(
-								$elm$html$Html$p,
-								_List_Nil,
+								$elm$html$Html$div,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('所有版权归黄宝臣(AKA 3gee)所有。')
+										$elm$html$Html$Attributes$class('block')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$h2,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('subtitle'),
+												$elm$html$Html$Attributes$class('block'),
+												$elm$html$Html$Attributes$class('has-text-primary-light'),
+												$elm$html$Html$Attributes$class('has-text-centered')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text('因为爱好广泛，在这里维护了三个不同的播客主题，分别是DS/CS，电影和哲学。')
+											]))
+									])),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2($elm$html$Html$br, _List_Nil, _List_Nil),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('tile'),
+										$elm$html$Html$Attributes$class('is-ancestor')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$div,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('tile'),
+												$elm$html$Html$Attributes$class('is-6'),
+												$elm$html$Html$Attributes$class('is-vertical'),
+												$elm$html$Html$Attributes$class('is-parent')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$div,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('tile'),
+														$elm$html$Html$Attributes$class('is-child'),
+														$elm$html$Html$Attributes$class('is-box')
+													]),
+												A3($author$project$Main$blogTileView, 'λ&τ', 'https://blog.3gee.me/categories/lambda-and-tau.html', '一个函数式编程和数据科学相关的博客')),
+												A2(
+												$elm$html$Html$div,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('tile'),
+														$elm$html$Html$Attributes$class('is-child'),
+														$elm$html$Html$Attributes$class('is-box')
+													]),
+												A3($author$project$Main$blogTileView, '过度解读', 'https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html', '艺术（主要以电影为主）的博客')),
+												A2(
+												$elm$html$Html$div,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('tile'),
+														$elm$html$Html$Attributes$class('is-child'),
+														$elm$html$Html$Attributes$class('is-box')
+													]),
+												A3($author$project$Main$blogTileView, '哲·叠', 'https://blog.3gee.me/categories/phold.html', '哲学相关的博客'))
+											])),
+										A2(
+										$elm$html$Html$div,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('tile'),
+												$elm$html$Html$Attributes$class('is-6'),
+												$elm$html$Html$Attributes$class('is-child')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$p,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('title'),
+														$elm$html$Html$Attributes$class('is-4'),
+														$elm$html$Html$Attributes$class('has-text-centered')
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$a,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$href('https://blog.3gee.me/photos/'),
+																$elm$html$Html$Attributes$class('has-text-primary-light')
+															]),
+														_List_fromArray(
+															[
+																$elm$html$Html$text('我的摄影集')
+															]))
+													])),
+												A2(
+												$elm$html$Html$figure,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('image'),
+														$elm$html$Html$Attributes$class('is-5by3')
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$img,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$src('./assets/img/photo-albums-pic.jpg')
+															]),
+														_List_Nil)
+													]))
+											]))
 									]))
 							]))
-					]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('is-hidden')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('The current URL is: '),
+						A2(
+						$elm$html$Html$b,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text(
+								$elm$url$Url$toString(model.url))
+							]))
+					])),
+				$author$project$Main$baseFooter
 			]),
 		title: '3GEE的主站'
 	};
