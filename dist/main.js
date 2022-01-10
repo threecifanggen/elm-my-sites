@@ -5417,7 +5417,8 @@ var $author$project$Main$baseFooter = A2(
 	$elm$html$Html$footer,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('footer')
+			$elm$html$Html$Attributes$class('footer'),
+			$elm$html$Html$Attributes$class('has-background-grey-dark')
 		]),
 	_List_fromArray(
 		[
@@ -5432,7 +5433,10 @@ var $author$project$Main$baseFooter = A2(
 				[
 					A2(
 					$elm$html$Html$p,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('has-text-grey-lighter')
+						]),
 					_List_fromArray(
 						[
 							$elm$html$Html$text('本网站由Elm'),
@@ -5475,6 +5479,123 @@ var $author$project$Main$baseFooter = A2(
 					_List_fromArray(
 						[
 							$elm$html$Html$text('©所有内容版权归黄宝臣(AKA 3gee)所有')
+						]))
+				]))
+		]));
+var $elm$html$Html$nav = _VirtualDom_node('nav');
+var $author$project$Main$baseHeader = A2(
+	$elm$html$Html$nav,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('level')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('level-item'),
+					$elm$html$Html$Attributes$class('has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('https://3gee.me'),
+							$elm$html$Html$Attributes$class('link'),
+							$elm$html$Html$Attributes$class('is-info')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Home')
+						]))
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('level-item'),
+					$elm$html$Html$Attributes$class('has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('https://workwiki.3gee.me'),
+							$elm$html$Html$Attributes$class('link'),
+							$elm$html$Html$Attributes$class('is-info')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('工作知识库')
+						]))
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('level-item'),
+					$elm$html$Html$Attributes$class('has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$src('./assets/logo/3gee-logo.png'),
+							$elm$html$Html$Attributes$class('image'),
+							$elm$html$Html$Attributes$class('is-48x48')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('level-item'),
+					$elm$html$Html$Attributes$class('has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('https://blog.3gee.me'),
+							$elm$html$Html$Attributes$class('link'),
+							$elm$html$Html$Attributes$class('is-info')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('博客')
+						]))
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('level-item'),
+					$elm$html$Html$Attributes$class('has-text-centered')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('https://blog.3gee.me/about/'),
+							$elm$html$Html$Attributes$class('link'),
+							$elm$html$Html$Attributes$class('is-info')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text('About')
 						]))
 				]))
 		]));
@@ -5521,27 +5642,6 @@ var $author$project$Main$blogTileView = F3(
 					]))
 			]);
 	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var $elm$html$Html$Attributes$classList = function (classes) {
-	return $elm$html$Html$Attributes$class(
-		A2(
-			$elm$core$String$join,
-			' ',
-			A2(
-				$elm$core$List$map,
-				$elm$core$Tuple$first,
-				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
-};
 var $elm$html$Html$code = _VirtualDom_node('code');
 var $author$project$Main$dsLearnCard = A4(
 	$author$project$Main$cardTemplate,
@@ -5584,139 +5684,13 @@ var $author$project$Main$fppyCard = A4(
 			_Utils_Tuple2('https://github.com/threecifanggen/python-functional-programming', 'GitHub')
 		]));
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$html$Html$section = _VirtualDom_node('section');
-var $author$project$Main$viewLink = F2(
-	function (path, viewName) {
-		return A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('navbar-item')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$href(path)
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text(viewName)
-						]))
-				]));
-	});
 var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
-				A2(
-				$elm$html$Html$nav,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('bd-navbar'),
-						$elm$html$Html$Attributes$class('navbar'),
-						$elm$html$Html$Attributes$class('container')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('navbar-brand')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('navbar-item'),
-										$elm$html$Html$Attributes$href('https://3gee.me')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h1,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$id('title')
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text('3GEE.ME')
-											]))
-									]))
-							])),
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('navbar-menu')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('navbar-start')
-									]),
-								_List_fromArray(
-									[
-										A2($author$project$Main$viewLink, 'https://3gee.me', 'Home'),
-										A2($author$project$Main$viewLink, 'https://workwiki.3gee.me', '工作知识库'),
-										A2(
-										$elm$html$Html$div,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$classList(
-												_List_fromArray(
-													[
-														_Utils_Tuple2('navbar-item', true),
-														_Utils_Tuple2('has-dropdown', true),
-														_Utils_Tuple2('is-hoverable', true)
-													]))
-											]),
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$a,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$href('https://blog.3gee.me'),
-														$elm$html$Html$Attributes$class('navbar-link')
-													]),
-												_List_fromArray(
-													[
-														$elm$html$Html$text('我的博客')
-													])),
-												A2(
-												$elm$html$Html$div,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$class('navbar-dropdown')
-													]),
-												_List_fromArray(
-													[
-														A2($author$project$Main$viewLink, 'https://blog.3gee.me/categories/lambda-and-tau.html', 'λ & τ'),
-														A2($author$project$Main$viewLink, 'https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html', '过度解读'),
-														A2($author$project$Main$viewLink, 'https://blog.3gee.me/categories/phold.html', '哲·叠')
-													]))
-											]))
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('navbar-end')
-									]),
-								_List_Nil)
-							]))
-					])),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				$author$project$Main$baseHeader,
 				A2(
 				$elm$html$Html$section,
 				_List_fromArray(

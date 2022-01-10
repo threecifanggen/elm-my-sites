@@ -80,16 +80,33 @@ subscriptions _ =
 
 -- VIEW
 
+baseHeader : Html Msg
+baseHeader = nav [ class "level" ] [
+  p [ class "level-item", class "has-text-centered"] [
+    a [ href "https://3gee.me", class "link", class "is-info"] [ text "Home" ]]
+  , p [ class "level-item", class "has-text-centered"] [
+    a [ href "https://workwiki.3gee.me", class "link", class "is-info"] [ text "工作知识库" ]]
+  , p [ class "level-item", class "has-text-centered"] [
+    img [ src "./assets/logo/3gee-logo.png", class "image", class "is-48x48"] []
+    ]
+  , p [ class "level-item", class "has-text-centered"] [
+    a [ href "https://blog.3gee.me", class "link", class "is-info"] [ text "博客" ]]
+  , p [ class "level-item", class "has-text-centered"] [
+    a [ href "https://blog.3gee.me/about/", class "link", class "is-info"] [ text "About" ]]]
+
 baseFooter : Html Msg
-baseFooter = footer [class "footer"] [
+baseFooter = footer [class "footer", class "has-background-grey-dark"] [
   div [class "content has-text-centered", id "footer-info"] [
-    p [] [
+    p [ class "has-text-grey-lighter" ] [
       text "本网站由Elm"
       , span [] [img [src "./assets/img/elm.svg", class "image", class "is-16x16" ] [] ]
       , text "和Bulma"
       , span [] [img [src "./assets/img/bulma.svg", class "image", class "is-16x16" ] [] ]
       ,text "构建"],
-    p [] [text "©所有内容版权归黄宝臣(AKA 3gee)所有"]]]
+    p [ class "has-text-grey-light" ] [text "©所有内容版权归黄宝臣(AKA 3gee)所有"]]]
+
+socialFooter : Html Msg
+socialFooter = footer [ class "footer" ] []
 
 cardTemplate : String -> (String, String) ->  List(Html msg) -> List(String, String) -> Html msg
 cardTemplate projectImage cardTitle description footerList =
@@ -143,25 +160,8 @@ view model =
   { title = "3GEE的主站"
   , body =
       [
-        nav [class "bd-navbar", class "navbar", class "container"] [
-            div [class "navbar-brand"] [
-                a [ class "navbar-item" , href "https://3gee.me"] [
-                   h1 [ id "title"] [text "3GEE.ME" ]]]
-            , div [class "navbar-menu"] [
-                div [class "navbar-start"] [
-                    viewLink "https://3gee.me" "Home"
-                    , viewLink "https://workwiki.3gee.me" "工作知识库"
-                    , div [ classList [ ("navbar-item", True), ("has-dropdown", True), ("is-hoverable", True) ]] [ 
-                        a [href "https://blog.3gee.me", class "navbar-link"] [text "我的博客"]
-                        , div [class "navbar-dropdown"] [
-                            viewLink "https://blog.3gee.me/categories/lambda-and-tau.html" "λ & τ"
-                            , viewLink "https://blog.3gee.me/categories/%E8%BF%87%E5%BA%A6%E8%A7%A3%E8%AF%BB.html" "过度解读"
-                            , viewLink "https://blog.3gee.me/categories/phold.html" "哲·叠"
-                         ]]]
-                , div [ class "navbar-end"] [
-
-                ]]
-        ]
+        br [] []
+        , baseHeader
         , section [class "section", class "is-large", class "has-background-info"] [
           div [class "container"] [
           h1 [class "title", class "has-text-primary-light", class "has-text-centered"] [text "欢迎来到我的主页"]
