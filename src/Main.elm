@@ -8,6 +8,7 @@ import Html.Attributes exposing (..)
 import Url
 import Views.Home exposing (homeView)
 import Html.Events exposing (onMouseUp)
+import Http
 
 main : Program () Model Msg
 main =
@@ -23,7 +24,6 @@ main =
 
 
 -- MODEL
-
 
 type alias Model =
   { key : Nav.Key
@@ -45,6 +45,7 @@ type Msg
   = LinkClicked Browser.UrlRequest
   | UrlChanged Url.Url
   | MouseOnBlogMenu
+
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -106,7 +107,36 @@ baseFooter = footer [class "footer", class "has-background-grey-dark"] [
     p [ class "has-text-grey-light" ] [text "©所有内容版权归黄宝臣(AKA 3gee)所有"]]]
 
 socialFooter : Html Msg
-socialFooter = footer [ class "footer" ] []
+socialFooter = footer [ class "footer"] [
+  div [class "container"] [
+    div [class "footer-title"] [ 
+      p [ class "has-text-centered", class "title"] [ text "社交网络"]
+    ]
+    , br [] []
+    , br [] []
+    , br [] []
+    , div [ class "columns", class "mx-4", id "footer-social-column", class "px-4", class "has-text-centered" ] [
+      div [ class "column", class "has-text-centered" ] [
+        a [ href "https://www.zhihu.com/people/huang-bao-chen"] [figure [class "image", class "is-96x96"] [ img [ src "./assets/img/zhihu.svg", class "has-text-centered"] [] ]
+        , p [ class "subtitle"] [ text "知乎"]]
+      ]
+      , div [ class "column", class "has-text-centered" ] [
+        a [ href "https://www.kaggle.com/threecifanggen"] [figure [class "image", class "is-96x96"] [ img [ src "./assets/img/kaggle.svg", class "has-text-centered"] [] ]
+        , p [ class "subtitle"] [ text "KAGGLE"]]
+      ]
+      , div [ class "column", class "has-text-centered" ] [
+        a [ href "https://github.com/threecifanggen"] [figure [class "image", class "is-96x96"] [ img [ src "./assets/img/github.svg", class "has-text-centered"] [] ]
+        , p [ class "subtitle"] [ text "GitHub"]]
+      ]
+      , div [ class "column", class "has-text-centered" ] [
+        a [ href "https://www.linkedin.cn/injobs/in/huang-baochen-84b58347"] [figure [class "image", class "is-96x96"] [ img [ src "./assets/img/linkedin.svg", class "has-text-centered"] [] ]
+        , p [ class "subtitle"] [ text "LinkedIn"]]
+      ]
+      , div [ class "column", class "has-text-centered" ] [
+        a [ href "https://stackoverflow.com/users/5387442/huang-baochen"] [figure [class "image", class "is-96x96"] [ img [ src "./assets/img/stackoverflow.svg", class "has-text-centered"] [] ]
+        , p [ class "subtitle"] [ text "StackOverFlow"]]
+      ]
+    ]]]
 
 cardTemplate : String -> (String, String) ->  List(Html msg) -> List(String, String) -> Html msg
 cardTemplate projectImage cardTitle description footerList =
@@ -200,6 +230,7 @@ view model =
         , div [ class "is-hidden" ] [
           text "The current URL is: "
           , b [] [ text (Url.toString model.url) ]]
+        , socialFooter
         , baseFooter
       ]
   }
